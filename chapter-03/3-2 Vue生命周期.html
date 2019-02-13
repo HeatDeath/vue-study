@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../vue.js"></script>
+    <title>3-2 Vue生命周期</title>
+</head>
+<body>
+    <div id="app">hello world</div>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            beforeCreate: function() {
+                console.log("before create");
+            },
+            created: function() {
+                console.log("created");
+            }
+        })
+        // 额，不知道为啥 console 里没有打印出来生命周期的日志，暂时跳过
+        // 看文档中并未着重介绍，之后需要再回来看
+        
+    </script>
+</body>
+</html>

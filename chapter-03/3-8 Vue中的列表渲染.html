@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="../vue.js"></script>
+    <title>3-8 Vue中的列表渲染</title>
+  </head>
+  <body>
+    <div id="app">
+      <div v-for="(item, index) in myList" :key="index">
+        {{ item }} --- {{ index }}
+      </div>
+
+      <template v-for="(item, index) in myListOne" :key="item.id">
+        <div>{{ item.name }} --- {{ index }}</div>
+        <span>{{ item.name }}</span>
+      </template>
+
+      <div v-for="(item,key,index) in myObj">
+        {{ item }} --- {{ key }} --- {{ index }}
+      </div>
+    </div>
+    <script>
+      // push pop shift unshift splice sort reverse
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          myList: ["hello", "hhahah", "12344444"],
+          myListOne: [
+            {
+              id: "0101010",
+              name: "hello1"
+            },
+            {
+              id: "0101011",
+              name: "hello2"
+            },
+            {
+              id: "0101012",
+              name: "hello3"
+            }
+          ],
+          myObj: {
+            name: "hello",
+            age: 29,
+            sex: "male"
+          }
+        },
+        methods: {}
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="../vue.js"></script>
+    <title>3-7 Vue中的条件渲染</title>
+  </head>
+  <body>
+    <div id="app">
+      <div v-if="show" data-test="v-if">
+        {{ msg }}
+      </div>
+      <div v-show="show" data-test="v-show">
+        {{ msg }}
+      </div>
+
+      <div v-if="showLetter === 'a'">this is a</div>
+      <div v-else-if="show === 'b'">this is b</div>
+      <div v-else>this is others</div>
+
+      <!-- 当给标签加上 key 时，vue 不会再复用标签 -->
+      <div v-if="show">
+        用户名: <input key="username">
+      </div>
+      <div v-if="show">
+        密码: <input key="password">
+      </div>
+
+    </div>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          show: false,
+          msg: "hello world",
+          showLetter: "a",
+        },
+        methods: {
+          handleDivClick: function() {
+            this.show = true;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
