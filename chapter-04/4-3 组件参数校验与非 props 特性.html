@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="../vue.js"></script>
+    <title>4-3 组件参数校验与非 props 特性</title>
+  </head>
+  <body>
+    <div id="root">
+      <item :content="hello world"></item>
+    </div>
+
+    <script>
+      var item = {
+        props: {
+          // 参数校验
+          // content: [Number, String],
+
+          content: {
+            type: String,
+            required: false,
+            default: "default val",
+            validator: function(val) {
+              return val.length > 5;
+            }
+          }
+        },
+        template: '<div @click="handleClick">{{content}}</div>'
+        // data: function() {
+        //   return {
+        //     number: this.count
+        //   };
+        // },
+        // methods: {
+        //   handleClick: function() {
+        //     this.number++;
+        //     this.$emit("change", 1)
+        //   }
+        // }
+      };
+
+      var vm = new Vue({
+        el: "#root",
+        components: {
+          item: item
+        },
+        data: {
+          total: 3
+        }
+        // methods: {
+        //   handleChange: function(val) {
+        //     this.total += val
+        //   }
+        // }
+      });
+    </script>
+  </body>
+</html>

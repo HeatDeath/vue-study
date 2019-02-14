@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="../vue.js"></script>
+    <title>4-6 在Vue中使用插槽</title>
+  </head>
+  <body>
+    <div id="root">
+      <item>
+        <template slot-scope="props">
+          <li>{{ props.item }} - hello </li>
+        </template>
+      </item>
+    </div>
+
+    <script>
+      var item = {
+        data: function() {
+          return {
+            list: [1, 2, 3, 4]
+          };
+        },
+        template: `<div>
+                      <ul>
+                          <slot
+                                v-for="item in list"
+                                :item=item
+                          ></slot>
+                      </ul>
+                  </div>`
+      };
+
+      var vm = new Vue({
+        el: "#root",
+        components: {
+          item: item
+        }
+      });
+    </script>
+  </body>
+</html>

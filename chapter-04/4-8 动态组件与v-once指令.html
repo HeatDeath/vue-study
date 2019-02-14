@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="../vue.js"></script>
+    <title>4-8 动态组件与v-once指令</title>
+  </head>
+  <body>
+    <div id="root">
+      <component :is="type"></component>
+      <!-- <child_one v-if="type === 'child_one'"></child_one> -->
+      <!-- <child_two v-if="type === 'child_two'"></child_two> -->
+      <button @click="handleBtnClick">change</button>
+    </div>
+
+    <script>
+      var childOne = {
+        template: `<div v-once>child one</div>`
+      };
+
+      var childTwo = {
+        template: `<div v-once>child two</div>`
+      };
+
+      var vm = new Vue({
+        el: "#root",
+        components: {
+          child_one: childOne,
+          child_two: childTwo
+        },
+        data: {
+          type: "child_one"
+        },
+        methods: {
+          handleBtnClick: function() {
+            this.type = this.type === "child_one" ? "child_two" : "child_one"
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

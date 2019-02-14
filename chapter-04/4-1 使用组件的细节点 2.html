@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="../vue.js"></script>
+    <title>4-1 使用组件的细节点</title>
+  </head>
+  <body>
+    <div id="root">
+      <div
+        ref="hello"
+        @click="handleClick"
+      >
+        hello world
+      </div>
+    </div>
+
+    <script>
+      var vm = new Vue({
+        el: "#root",
+        data: {
+          
+        },
+        methods: {
+          handleClick: function() {
+            // 获取 DOM 元素引用
+            alert(this.$refs.hello.innerHTML)
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
