@@ -17,10 +17,16 @@
 </template>
 
 <script>
+// import { mapState } from 'vuex'
 export default {
-  name: 'HomeHeader'
+  name: 'HomeHeader',
+  props: {
+    city: String
+  }
+  // computed: {
+  //   ...mapState(['city'])
+  // }
 }
-
 </script>
 <style lang='stylus' scoped>
 @import '~styles/varibles.styl';
