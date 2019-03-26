@@ -17,15 +17,18 @@
 </template>
 
 <script>
-// import { mapState } from 'vuex'
+import { mapState } from 'vuex'
 export default {
   name: 'HomeHeader',
   props: {
     city: String
+  },
+  // 计算属性
+  // ... 展开运算符
+  // mapstate 将 vuex 中的数据映射到组件的计算属性中
+  computed: {
+    ...mapState(['city'])
   }
-  // computed: {
-  //   ...mapState(['city'])
-  // }
 }
 </script>
 <style lang='stylus' scoped>
